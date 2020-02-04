@@ -42,7 +42,7 @@ for b in binList:
     csv = b + ".csv"
     print(csv)
     try:
-        cmd = "gpmd2csv -i " + b + " -o " + csv
+        cmd = "/home/motsuka/go/bin/gpmd2csv -i " + b + " -o " + csv
         print(cmd)
         subprocess.check_call(cmd.split())
     except:
