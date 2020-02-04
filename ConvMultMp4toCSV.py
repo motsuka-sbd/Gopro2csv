@@ -18,11 +18,6 @@ for p in glob.glob(sys.argv[1] + "/*.MP4"):
     print(p)
     fileList.append(p)
 '''
-binName = str(fileList[0]) + ".bin"
-cmd = "ffmpeg -y -i " + fileList[0] + " -codec copy -map 0:3 -f rawvideo " + binName
-print(cmd)
-
-'''
 # convert mp4 to bin (recursive)
 binList = []
 for f in fileList:
@@ -35,12 +30,20 @@ for f in fileList:
         print("subprocess.check_call() in bin convert failed")
 
     binList.append(binName)
+'''
+
+binList =[]
+for p in glob.glob(sys.argv[1] + "/*.bin"):
+    print(p)
+    binList.append(p)
 
 # convert bin to csv (recursive)
 for b in binList:
     csv = b + ".csv"
+    print(csv)
     try:
         cmd = "gpmd2csv -i " + b + " -o " + csv
+        print(cmd)
         subprocess.check_call(cmd.split())
     except:
         print("subprocess.check_call() in csv convert failed")
