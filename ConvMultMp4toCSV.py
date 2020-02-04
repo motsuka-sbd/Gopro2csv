@@ -9,19 +9,16 @@ import subprocess
 # AccGPS = 1000 # no need, as acccuracy does not matter to gpmd2csv
 # FixFPS = 3    # no need, as accuracy does not matter to gpmd2csv
 
-fileList = glob.glob(sys.argv + "/*.MP4")
+#fileList = glob.glob(sys.argv + "/*.MP4")
+fileList = glob.glob("Y:/Honda EV/Day1/1/*.MP4")
 
 # convert mp4 to bin (recursive)
 binList = []
 for f in fileList:
+    print(f)
     binName = str(f) + ".bin"
+    print(binName)
     try:
-        # ffprobe
-        # subprocess.check_call("ffprobe " + f)
-
-        # check which stream contains gpmd 
-
-
         # ffmpeg
         subprocess.check_call("ffmpeg -y -i " + f + "-codec copy -map 0:3 -f rawvideo " + binName)  # bad to have constants 0:3
     except:
@@ -30,9 +27,9 @@ for f in fileList:
     binList.append(binName)
 
 # convert bin to csv (recursive)
-for f in binList:
-    csv = f + ".csv"
+for b in binList:
+    csv = b + ".csv"
     try:
-        subprocess.check_call("gpmd2csv -i " + f + " -o " + csv)
+        subprocess.check_call("gpmd2csv -i " + b + " -o " + csv)
     except:
         print("subprocess.check_call() in csv convert failed")
