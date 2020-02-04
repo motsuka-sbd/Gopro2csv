@@ -1,7 +1,7 @@
 import glob
 import sys
 import subprocess
-import pathlib
+#import pathlib
 
 # get MP4 file list in the designated directory
 # this script needs argument for directory which contains MP4 file
