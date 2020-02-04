@@ -1,6 +1,7 @@
 import glob
 import sys
 import subprocess
+import pathlib
 
 # get MP4 file list in the designated directory
 # this script needs argument for directory which contains MP4 file
@@ -9,8 +10,13 @@ import subprocess
 # AccGPS = 1000 # no need, as acccuracy does not matter to gpmd2csv
 # FixFPS = 3    # no need, as accuracy does not matter to gpmd2csv
 
+print(sys.argv[1])
+#p_temp = pathlib.Path(sys.argv[1])
+
+
 fileList = []
-for p in glob.glob(sys.argv[0] + "/*.MP4"):
+for p in glob.glob(sys.argv[1] + "/*.MP4"):
+    print(p)
     fileList.append(p)
 
 # convert mp4 to bin (recursive)
