@@ -9,9 +9,9 @@ import subprocess
 # AccGPS = 1000 # no need, as acccuracy does not matter to gpmd2csv
 # FixFPS = 3    # no need, as accuracy does not matter to gpmd2csv
 
-#fileList = glob.glob(sys.argv + "/*.MP4")
-print(glob.glob(sys.argv + "/*.MP4"))
-fileList = glob.glob(sys.argv + "/*.MP4")
+fileList = []
+for p in glob.glob(sys.argv[0] + "/*.MP4"):
+    fileList.append(p)
 
 # convert mp4 to bin (recursive)
 binList = []
