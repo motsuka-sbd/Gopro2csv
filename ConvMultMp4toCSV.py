@@ -13,7 +13,6 @@ import subprocess
 print(sys.argv[1])
 #p_temp = pathlib.Path(sys.argv[1])
 
-
 fileList = []
 for p in glob.glob(sys.argv[1] + "/*.MP4"):
     print(p)
@@ -30,7 +29,8 @@ for f in fileList:
     binName = str(f) + ".bin"
     try:
         # ffmpeg
-        subprocess.check_call("ffmpeg -y -i " + f + " -codec copy -map 0:3 -f rawvideo " + binName)  # bad to have constants 0:3
+        cmd = "ffmpeg -y -i " + f + " -codec copy -map 0:3 -f rawvideo " + binName
+        subprocess.check_call(cmd.split())  # bad to have constants 0:3
     except:
         print("subprocess.check_call() in bin convert failed")
 
@@ -40,7 +40,8 @@ for f in fileList:
 for b in binList:
     csv = b + ".csv"
     try:
-        subprocess.check_call("gpmd2csv -i " + b + " -o " + csv)
+        cmd = "gpmd2csv -i " + b + " -o " + csv
+        subprocess.check_call(cmd.split())
     except:
         print("subprocess.check_call() in csv convert failed")
 #'''
