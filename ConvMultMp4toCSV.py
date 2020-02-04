@@ -10,6 +10,7 @@ import subprocess
 # FixFPS = 3    # no need, as accuracy does not matter to gpmd2csv
 
 #fileList = glob.glob(sys.argv + "/*.MP4")
+print(glob.glob(sys.argv + "/*.MP4"))
 fileList = glob.glob(sys.argv + "/*.MP4")
 
 # convert mp4 to bin (recursive)
