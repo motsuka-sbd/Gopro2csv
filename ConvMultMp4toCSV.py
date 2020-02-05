@@ -17,7 +17,7 @@ fileList = []
 for p in glob.glob(sys.argv[1] + "/*.MP4"):
     print(p)
     fileList.append(p)
-'''
+
 # convert mp4 to bin (recursive)
 binList = []
 for f in fileList:
@@ -30,7 +30,7 @@ for f in fileList:
         print("subprocess.check_call() in bin convert failed")
 
     binList.append(binName)
-'''
+
 
 binList =[]
 for p in glob.glob(sys.argv[1] + "/*.bin"):
